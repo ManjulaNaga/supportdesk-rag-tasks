@@ -1,6 +1,10 @@
-#This is my supportdesk Rag implemented Agentic agent
+# This is my supportdesk Rag implemented Agentic agent
 
 ## there are 3 modules
  - chunking
  - embedding
  - indexing
+
+# SupportDesk-RAG: A Support Ticket Retrieval & Troubleshooting Assistant
+
+## Hands-On RAG Workshop with OpenAI
