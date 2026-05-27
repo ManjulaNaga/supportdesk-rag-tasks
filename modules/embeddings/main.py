@@ -118,7 +118,7 @@ print("PART 2: Computing Similarity Scores")
 print("="*80)
 
 # Create a search query - this is what a user might type
-query = "Users can't login after changing password"
+query = "Database is running very slowly"
 print(f"\nSearch Query: '{query}'")
 
 # -----------------------------------------------------------------------------
@@ -176,26 +176,7 @@ for rank, idx in enumerate(top_indices, 1):
 # ============================================================================
 # PART 4: Visualize Embedding Relationships
 # ============================================================================
-#
-# THE CHALLENGE WITH 1536 DIMENSIONS:
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# We can't visualize 1536D space directly (humans can only see 2D/3D)
-#
-# OPTIONS FOR VISUALIZATION:
-# ──────────────────────────
-# 1. Similarity heatmap - show pairwise similarities (what we do here)
-# 2. t-SNE/UMAP - project to 2D (LOSES information, can be misleading!) - OUT OF SCOPE OF THIS CLASS
-# 3. PCA - linear projection (also loses information) - - OUT OF SCOPE OF THIS CLASS
-#
-# WE CHOOSE: Similarity heatmap
-# WHY? Shows TRUE relationships without distortion
-#
-# TEACHING POINT:
-# Don't trust dimensionality reduction plots!
-# They can make distant points look close or vice versa.
-# Similarity scores are the GROUND TRUTH.
-#
-# ============================================================================
+
 print("\n" + "="*80)
 print("PART 4: Visualizing Similarity Relationships")
 print("="*80)
@@ -318,6 +299,24 @@ for test_query in test_queries:
     print(f"\nQuery: '{test_query}'")
     print(f"  → Best match: {tickets[top_idx]['title']}")
     print(f"  → Similarity: {sims[top_idx]:.4f}")
+
+# Compare two queries
+query1 = "Login authentication failed"
+query2 = "Slow database performance"
+
+print("\n" + "="*80)
+print("COMPARING TWO QUERIES")
+print("="*80)
+
+for q in [query1, query2]:
+    response = client.embeddings.create(input=[q], model=embedding_model)
+    q_emb = np.array([response.data[0].embedding])
+    sims = cosine_similarity(q_emb, embeddings)[0]
+    top_idx = np.argmax(sims)
+    
+    print(f"\nQuery: '{q}'")
+    print(f"  Best match: {tickets[top_idx]['title']}")
+    print(f"  Score: {sims[top_idx]:.4f}")
 
 # ============================================================================
 # SUMMARY
