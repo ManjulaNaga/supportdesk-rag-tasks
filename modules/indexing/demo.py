@@ -268,7 +268,7 @@ for i, node in enumerate(vector_response.source_nodes, 1):
 #   - High-level summarization queries
 #   - When semantic similarity might miss nuanced relevance
 #
-# WHEN NOT TO USE:
+# WHEN NOT TO USE: 
 #   - Large datasets (doesn't scale!)
 #   - Real-time applications (too slow)
 #

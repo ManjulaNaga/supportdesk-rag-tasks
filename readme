@@ -8,3 +8,10 @@
 # SupportDesk-RAG: A Support Ticket Retrieval & Troubleshooting Assistant
 
 ## Hands-On RAG Workshop with OpenAI
+
+LEARNING RESOURCES:
+- RAG Paper (Lewis et al.): https://arxiv.org/abs/2005.11401
+- LangChain Documentation: https://python.langchain.com/docs/get_started/introduction
+- LCEL Guide: https://python.langchain.com/docs/expression_language/
+- Prompt Engineering: https://platform.openai.com/docs/guides/prompt-engineering
+- Chroma Vector DB: https://docs.trychroma.com/
